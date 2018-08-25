@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container form-style">
+    <form id="train-form" action="/trains/btw" method="post">
+        <div class="form-group">
+            <label for="source">Source</label>
+            <input type="text" id="source" class="form-control" name="source">
+            <br>
+            <!--<input type="text" id="source" class="form-control" name="source">-->
+        </div>
+        <div class="form-group">
+            <label for="destination">Destination</label>
+            <input type="text" id="destination" class="form-control" name="destination">
+        </div>
+        <button type="submit" class="btn btn-success">Check Trains</button>
+    </form>
+
+
+    <h1>Reference</h1>
+
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Source
+        <span class="caret"></span></button>
+
+        <ul class="dropdown-menu">
+            <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                {% for station in stations %}
+                    <li>{{ station.name }} - {{ station._id }}</li>
+                {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    if (value.length > 2) {
+	    $(".dropdown-menu li").filter(function() {
+	      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+	    });
+	  }
+	});
+});
+
+</script>
+
+{% endblock %}

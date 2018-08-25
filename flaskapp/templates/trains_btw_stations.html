@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+    <h2>{{ source }} to {{ destination }} Trains</h2>
+    <br>
+    <br>
+    {% for train in trains %}
+    <h3><a href = "/timetable/{{ train.train_no }}">{{ train.train_no }} - {{ train.train_name }} </a></h3>
+    <h4>{{ train.sequence }}st Stop at {{ train.station_code }} - {{ train.station_name }} </h4>
+    <h4> Arrival Time - {{ train.arrival_time }} Departure Time - {{ train.departure_time }}</h4>
+    <h4> Destination Time - {{ train.reach_time }}</h4>
+        <hr>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+    <h2>{{ train_class._id}} - {{ train_class.name }}</h2>
+    <br>
+    <br>
+    <table style="width:100%;border: 1px solid black;" border="1">
+        <tr>
+            <th>Stop No.</th>
+            <th>Station Code</th>
+            <th>Station Name</th>
+            <th>Arrival Time</th>
+            <th>Departure Time</th>
+            <th>Distance</th>
+        </tr>
+    {% for station in stations %}
+    <tr>
+        <th>{{ station.sequence }}</th>
+        <th>{{ station.station_code }}</th>
+        <th>{{ station.station_name }}</th>
+        <th>{{ station.arrival_time }}</th>
+        <th>{{ station.departure_time }}</th>
+        <th>{{ station.distance }}</th>
+    </tr>
+    {% endfor %}
+    </table>
+</div>
+
+{% endblock %}
